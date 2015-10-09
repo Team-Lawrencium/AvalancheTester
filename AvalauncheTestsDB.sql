@@ -1,7 +1,7 @@
 USE [master]
 GO
 
-/****** Object:  Database [AvalauncheTestsDB]    Script Date: 9.10.2015 г. 16:53:47 ******/
+/****** Object:  Database [AvalauncheTestsDB]    Script Date: 9.10.2015 г. 18:15:30 ******/
 CREATE DATABASE [AvalauncheTestsDB]
  CONTAINMENT = NONE
  ON  PRIMARY 
