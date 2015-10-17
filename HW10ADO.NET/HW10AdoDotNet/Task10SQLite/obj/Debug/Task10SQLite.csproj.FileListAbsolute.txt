@@ -1,0 +1,1 @@
+C:\Telerik\12. Databases\Homeworks\HW10ADO.NET\HW10AdoDotNet\Task10SQLite\bin\Debug\Task10SQLite.exe.config

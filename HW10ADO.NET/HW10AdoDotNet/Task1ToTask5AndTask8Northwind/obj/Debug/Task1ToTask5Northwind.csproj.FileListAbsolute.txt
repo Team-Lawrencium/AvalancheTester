@@ -1,0 +1,6 @@
+C:\Telerik\12. Databases\Homeworks\HW10ADO.NET\HW10AdoDotNet\Task1ToTask5Northwind\bin\Debug\Task1ToTask5Northwind.exe.config
+C:\Telerik\12. Databases\Homeworks\HW10ADO.NET\HW10AdoDotNet\Task1ToTask5Northwind\bin\Debug\Task1ToTask5Northwind.exe
+C:\Telerik\12. Databases\Homeworks\HW10ADO.NET\HW10AdoDotNet\Task1ToTask5Northwind\bin\Debug\Task1ToTask5Northwind.pdb
+C:\Telerik\12. Databases\Homeworks\HW10ADO.NET\HW10AdoDotNet\Task1ToTask5Northwind\obj\Debug\Task1ToTask5Northwind.csprojResolveAssemblyReference.cache
+C:\Telerik\12. Databases\Homeworks\HW10ADO.NET\HW10AdoDotNet\Task1ToTask5Northwind\obj\Debug\Task1ToTask5Northwind.exe
+C:\Telerik\12. Databases\Homeworks\HW10ADO.NET\HW10AdoDotNet\Task1ToTask5Northwind\obj\Debug\Task1ToTask5Northwind.pdb

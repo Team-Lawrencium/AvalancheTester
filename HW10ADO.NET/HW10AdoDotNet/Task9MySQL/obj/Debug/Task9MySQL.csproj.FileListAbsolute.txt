@@ -1,0 +1,7 @@
+C:\Telerik\12. Databases\Homeworks\HW10ADO.NET\HW10AdoDotNet\Task9MySQL\bin\Debug\Task9MySQL.exe.config
+C:\Telerik\12. Databases\Homeworks\HW10ADO.NET\HW10AdoDotNet\Task9MySQL\bin\Debug\Task9MySQL.exe
+C:\Telerik\12. Databases\Homeworks\HW10ADO.NET\HW10AdoDotNet\Task9MySQL\bin\Debug\Task9MySQL.pdb
+C:\Telerik\12. Databases\Homeworks\HW10ADO.NET\HW10AdoDotNet\Task9MySQL\bin\Debug\MySql.Data.dll
+C:\Telerik\12. Databases\Homeworks\HW10ADO.NET\HW10AdoDotNet\Task9MySQL\obj\Debug\Task9MySQL.csprojResolveAssemblyReference.cache
+C:\Telerik\12. Databases\Homeworks\HW10ADO.NET\HW10AdoDotNet\Task9MySQL\obj\Debug\Task9MySQL.exe
+C:\Telerik\12. Databases\Homeworks\HW10ADO.NET\HW10AdoDotNet\Task9MySQL\obj\Debug\Task9MySQL.pdb
