@@ -1,0 +1,6 @@
+C:\Telerik\12. Databases\Homeworks\HW10ADO.NET\HW10AdoDotNet\Task6AndTask7Excell\bin\Debug\Task6AndTask7Excell.exe.config
+C:\Telerik\12. Databases\Homeworks\HW10ADO.NET\HW10AdoDotNet\Task6AndTask7Excell\bin\Debug\Task6AndTask7Excell.exe
+C:\Telerik\12. Databases\Homeworks\HW10ADO.NET\HW10AdoDotNet\Task6AndTask7Excell\bin\Debug\Task6AndTask7Excell.pdb
+C:\Telerik\12. Databases\Homeworks\HW10ADO.NET\HW10AdoDotNet\Task6AndTask7Excell\obj\Debug\Task6AndTask7Excell.exe
+C:\Telerik\12. Databases\Homeworks\HW10ADO.NET\HW10AdoDotNet\Task6AndTask7Excell\obj\Debug\Task6AndTask7Excell.pdb
+C:\Telerik\12. Databases\Homeworks\HW10ADO.NET\HW10AdoDotNet\Task6AndTask7Excell\obj\Debug\Task6AndTask7Excell.csprojResolveAssemblyReference.cache
