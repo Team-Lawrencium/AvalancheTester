@@ -1,9 +1,17 @@
-﻿namespace AvalancheTester.Application
+﻿using AvalancheTester.Application.DbHandlers.MongoDb;
+using MongoDB.Driver;
+using System.Linq;
+
+namespace AvalancheTester.Application
 {
     public class EntryPoint
     {
         static void Main()
         {
+            MongoDatabase mongoDb = MongoDb.GetDatabase();
+            MongoDb.Populate(mongoDb);
+
+            var tests = mongoDb.GetCollection<Test>("Tests").FindAll().ToList();
             /*
              * sqlServer.getConection()
              * mongoDb.getConnection()
