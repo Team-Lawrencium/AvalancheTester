@@ -1,0 +1,16 @@
+MongoDb инсталация и използване
+1. Инсталирайте MongoDb (DUH)
+2. Добавете bin директорията на MongoDb в системмите пътища
+My Computer => Properties => Advanced system settings => Enviroment Variables => System variables => Path
+Добавете пътя към mongodb/bin. Не забравяйте да сложите ; на прединия път ако няма.
+3. Стартирайте MongoDb сървъра в конзола
+mongod --dbpath "C:\Prog\mongodb\data"
+като в "C:\Prog\mongodb\data" ще се записват данните от базата. Може да изберете и друга директория
+4. Стартиране на MongoDb конзолата
+- Отворете друг прозорец с конзола
+- въведете команда "mongo"
+5. Създайте базата
+use AvalaunchTestsDb
+6. Инсталирайте NuGet пакетите
+- дайте на солюшъна "Restore NuGet Packages"
+- компилирайте (DUH)
