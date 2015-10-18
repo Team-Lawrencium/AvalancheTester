@@ -11,6 +11,7 @@ namespace AvalancheTester.Application
             MongoDatabase mongoDb = MongoDb.GetDatabase();
             MongoDb.Populate(mongoDb);
 
+            //Get all tests from collection "Tests" 
             var tests = mongoDb.GetCollection<Test>("Tests").FindAll().ToList();
             /*
              * sqlServer.getConection()
