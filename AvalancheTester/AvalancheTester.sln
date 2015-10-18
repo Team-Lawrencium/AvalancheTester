@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvalancheTester.Application", "AvalancheTester.Application\AvalancheTester.Application.csproj", "{877E5FF1-B222-442D-83CB-D348856C9597}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfReport", "PdfReport\PdfReport.csproj", "{54924129-7D46-44F1-A368-B895C4DFCE66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{877E5FF1-B222-442D-83CB-D348856C9597}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{877E5FF1-B222-442D-83CB-D348856C9597}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{877E5FF1-B222-442D-83CB-D348856C9597}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54924129-7D46-44F1-A368-B895C4DFCE66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54924129-7D46-44F1-A368-B895C4DFCE66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54924129-7D46-44F1-A368-B895C4DFCE66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54924129-7D46-44F1-A368-B895C4DFCE66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

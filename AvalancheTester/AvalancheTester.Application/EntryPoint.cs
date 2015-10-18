@@ -25,6 +25,8 @@ namespace AvalancheTester.Application
              * XML.export(sqlServer.getData(query))
              * 
              * Console.WriteLine("Done"); */
+
+            //PdfReport.PdfReport.CreatePdf("Testing PDF report!");
         }
     }
 }
