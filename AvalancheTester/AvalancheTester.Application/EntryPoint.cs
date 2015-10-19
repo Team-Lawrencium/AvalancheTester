@@ -35,9 +35,13 @@ namespace AvalancheTester.Application
 
 
             // Adding some data to the tables
-            var dataGenerator = new ManualDataGenerator();
+            /*var dataGenerator = new ManualDataGenerator();
 
-            dataGenerator.GenerateData();
+            dataGenerator.GenerateData();*/
+
+            var handler = new NewExcelTableHandler();
+
+            handler.InputDataToDatabase();
         }
     }
 }

@@ -61,6 +61,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Device" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -92,6 +93,7 @@
     <Compile Include="EntryPoint.cs" />
     <Compile Include="ExcelTableHandler.cs" />
     <Compile Include="ManualDataGenerator.cs" />
+    <Compile Include="NewExcelTableHandler.cs" />
     <Compile Include="Organization.cs">
       <DependentUpon>AvalancheTestsDbEntities.tt</DependentUpon>
     </Compile>

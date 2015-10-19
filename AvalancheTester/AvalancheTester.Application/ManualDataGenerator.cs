@@ -71,7 +71,7 @@ namespace AvalancheTester.Application
                     PlaceId = 1,
                     UserId = 1,
                     Date = new DateTime(2015, 1, 12),
-                    Slope = 27.5f,
+                    Slope = 27,
 
                 };
                 ivanTest.Organizations.Add(hutAleko);
@@ -85,7 +85,7 @@ namespace AvalancheTester.Application
                     PlaceId = 3,
                     UserId = 2,
                     Date = new DateTime(2015, 1, 12),
-                    Slope = 27.5f
+                    Slope = 28
                 };
                 petarTest.Organizations.Add(rilaSport);
                 db.Tests.Add(petarTest);
