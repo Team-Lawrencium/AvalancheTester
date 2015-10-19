@@ -60,6 +60,10 @@
       <HintPath>..\packages\mongocsharpdriver.2.0.1\lib\net45\MongoDB.Driver.Legacy.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MySql.Data, Version=6.9.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.7\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MySql.Data.Entity.EF6, Version=6.9.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -124,10 +128,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UserReportsMySQL.tt</DependentUpon>
     </Compile>
-    <Compile Include="UserReportsMySQL.Designer.cs">
+    <Compile Include="UserReportsEntitiesMySQL.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UserReportsMySQL.edmx</DependentUpon>
+      <DependentUpon>UserReportsEntitiesMySQL.edmx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -142,12 +146,12 @@
       <DependentUpon>AvalancheTestsDbEntities.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
-    <EntityDeploy Include="UserReportsMySQL.edmx">
+    <EntityDeploy Include="UserReportsEntitiesMySQL.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>UserReportsMySQL.Designer.cs</LastGenOutput>
+      <LastGenOutput>UserReportsEntitiesMySQL.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="UserReportsMySQL.edmx.diagram">
-      <DependentUpon>UserReportsMySQL.edmx</DependentUpon>
+    <None Include="UserReportsEntitiesMySQL.edmx.diagram">
+      <DependentUpon>UserReportsEntitiesMySQL.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -166,12 +170,12 @@
     </Content>
     <Content Include="UserReportsMySQL.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UserReportsMySQL.edmx</DependentUpon>
+      <DependentUpon>UserReportsEntitiesMySQL.edmx</DependentUpon>
       <LastGenOutput>UserReportsMySQL.Context.cs</LastGenOutput>
     </Content>
     <Content Include="UserReportsMySQL.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UserReportsMySQL.edmx</DependentUpon>
+      <DependentUpon>UserReportsEntitiesMySQL.edmx</DependentUpon>
       <LastGenOutput>UserReportsMySQL.cs</LastGenOutput>
     </Content>
   </ItemGroup>

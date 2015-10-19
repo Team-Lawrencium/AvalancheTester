@@ -8,6 +8,10 @@ namespace AvalancheTester.Application
             //MongoDatabase mongoDb = MongoDb.GetDatabase();
             //MongoDb.Populate(mongoDb);
 
+            using (UserReportsEntities db=new UserReportsEntities())
+            {
+
+            }
             //Get all tests from collection "Tests" 
             //var tests = mongoDb.GetCollection<Test>("Tests").FindAll().ToList();
             /*

@@ -13,9 +13,9 @@ namespace AvalancheTester.Application
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class userReportsEntities : DbContext
+    public partial class UserReportsEntities : DbContext
     {
-        public userReportsEntities()
+        public UserReportsEntities()
             : base("name=userReportsEntities")
         {
         }
