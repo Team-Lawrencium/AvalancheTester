@@ -9,7 +9,7 @@ namespace AvalancheTester.Application.DbHandlers.MongoDb
     public static class MongoDbDataGenerator
     {
         const string DatabaseHost = "mongodb://127.0.0.1";
-        const string DatabaseName = "AvalaunchTestsDb";
+        const string DatabaseName = "AvalancheTestsDb";
 
         public static void Populate(MongoDatabase db)
         {
@@ -63,13 +63,13 @@ namespace AvalancheTester.Application.DbHandlers.MongoDb
 
             places.Insert(new MongoPlace()
             {
-                Id = ObjectId.GenerateNewId().ToString(),
+                Id = 4,
                 Name = "Стара Планина"
             });
 
             places.Insert(new MongoPlace()
             {
-                Id = ObjectId.GenerateNewId().ToString(),
+                Id = 5,
                 Name = "Родопи"
             });
         }

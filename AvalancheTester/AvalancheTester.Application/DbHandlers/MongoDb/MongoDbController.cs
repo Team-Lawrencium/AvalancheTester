@@ -25,9 +25,9 @@
 
         public IMongoDatabase GetDatabase()
         {
-            var mongoClient = new MongoClient(host);
+            var mongoClient = new MongoClient(this.host);
 
-            return mongoClient.GetDatabase(dbName);
+            return mongoClient.GetDatabase(this.dbName);
         }
     }
 }
