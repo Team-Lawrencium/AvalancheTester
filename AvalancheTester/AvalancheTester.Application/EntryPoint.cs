@@ -48,9 +48,13 @@ namespace AvalancheTester.Application
 
             handler.InputDataToDatabase();*/
 
-            //var dataGenerator = new ManualDataGenerator();
+            /*var dataGenerator = new ManualDataGenerator();
 
-            //dataGenerator.GenerateData();
+            dataGenerator.GenerateData();*/
+
+            var newHandler = new NewExcelTableHandler();
+
+            newHandler.InputDataToDatabase();
 
         }
     }
