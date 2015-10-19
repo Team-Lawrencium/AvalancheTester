@@ -6,14 +6,19 @@ namespace AvalancheTester.Application
 {
     public class ExcelTableHandler
     {
-        private const string Filepath = "../../DailyTestReports.xlsx";
+        private const string InputFilepath = "../../DailyTestReports.xlsx";
 
-        private const string ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source="
-                                                + Filepath + ";Extended Properties='Excel 12.0 xml;HDR=Yes';";
+        private const string InputFileConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source="
+                                                + InputFilepath + ";Extended Properties='Excel 12.0 xml;HDR=Yes';";
+
+        private const string OutputFilepath = "../../DailyTestReportsOutput.xlsx";
+
+        private const string OutputFileConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source="
+                                                + OutputFilepath + ";Extended Properties='Excel 12.0 xml;HDR=Yes';";
 
         public static void ReadFromExcel()
         {
-            OleDbConnection excelConnection = new OleDbConnection(ConnectionString);
+            OleDbConnection excelConnection = new OleDbConnection(InputFileConnectionString);
 
             using (excelConnection)
             {
@@ -45,6 +50,35 @@ namespace AvalancheTester.Application
                     }
                 }
             }
+        }
+
+        public static void WriteInExcel(string testerName, string placeName, string placeArea, float slope, string date, string testResult)
+        {
+            OleDbConnection excelConnection = new OleDbConnection(OutputFileConnectionString);
+
+            using (excelConnection)
+            {
+                excelConnection.Open();
+
+                DataTable tableSchema = excelConnection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+
+                string sheetName = tableSchema.Rows[0]["TABLE_NAME"].ToString();
+
+                OleDbCommand excelDbCommand = new OleDbCommand(
+                    "INSERT INTO [" + sheetName + "] VALUES (@TesterName, @PlaceName, @PlaceArea, @Slope, @Date, @TestResult)", excelConnection);
+
+                excelDbCommand.Parameters.AddWithValue("@TesterName", testerName);
+                excelDbCommand.Parameters.AddWithValue("@PlaceName", placeName);
+                excelDbCommand.Parameters.AddWithValue("@PlaceArea", placeArea);
+                excelDbCommand.Parameters.AddWithValue("@Slope", slope);
+                excelDbCommand.Parameters.AddWithValue("@Date", date);
+                excelDbCommand.Parameters.AddWithValue("@testResult", testResult);
+
+                excelDbCommand.ExecuteNonQuery();
+
+                Console.WriteLine("Added new row!");
+            }
+            
         }
     }
 }

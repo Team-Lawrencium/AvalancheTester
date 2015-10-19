@@ -33,7 +33,8 @@ namespace AvalancheTester.Application
 
             ExcelTableHandler.ReadFromExcel();
 
-
+            ExcelTableHandler.WriteInExcel("Бай Иван Хижара", "Рила", "Маркуджиците", 23.4f, "10.02.2015",
+                "Компресионен тест 3 повторения: Слой 163-120 см. – СТ1, СТ3...");
         }
     }
 }
