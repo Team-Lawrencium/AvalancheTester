@@ -1,5 +1,7 @@
 ﻿
 
+using AvalancheTester.Application.DbHandlers.MongoDb;
+
 namespace AvalancheTester.Application
 {
     public class EntryPoint
@@ -60,7 +62,8 @@ namespace AvalancheTester.Application
 
             // Reading from MongoDb and writing to SQL Server db
 
-
+            var mongoPlaceEntitiesController = new PlaceEntitiesController();
+            mongoPlaceEntitiesController.UploadMongoPlacesToSql();
 
         }
     }
