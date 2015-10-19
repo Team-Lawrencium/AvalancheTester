@@ -64,6 +64,7 @@
     <Compile Include="DbHandlers\MongoDb\Test.cs" />
     <Compile Include="DbHandlers\MongoDb\User.cs" />
     <Compile Include="EntryPoint.cs" />
+    <Compile Include="ExcelTableHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

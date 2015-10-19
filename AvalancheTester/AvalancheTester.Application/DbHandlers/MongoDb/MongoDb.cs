@@ -23,13 +23,15 @@ namespace AvalancheTester.Application.DbHandlers.MongoDb
 
             users.Insert(new User()
             {
-                Id = ObjectId.GenerateNewId().ToString(),
+                //Id = ObjectId.GenerateNewId().ToString(),
+                Id = GenerateObjectId(),
                 Name = "Pe6o Petrov"
             });
 
             users.Insert(new User()
             {
-                Id = ObjectId.GenerateNewId().ToString(),
+                //Id = ObjectId.GenerateNewId().ToString(),
+                Id = GenerateObjectId(),
                 Name = "Hristo Hristov Hristoskov"
             });
 
@@ -60,6 +62,11 @@ namespace AvalancheTester.Application.DbHandlers.MongoDb
             });
 
             var testsList = tests.FindAll().ToList();
+        }
+
+        public static string GenerateObjectId()
+        {
+            return ObjectId.GenerateNewId().ToString();
         }
 
         public static void ClearDatabase(MongoDatabase db)

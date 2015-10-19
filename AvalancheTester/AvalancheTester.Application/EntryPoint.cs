@@ -8,11 +8,11 @@ namespace AvalancheTester.Application
     {
         static void Main()
         {
-            MongoDatabase mongoDb = MongoDb.GetDatabase();
-            MongoDb.Populate(mongoDb);
+            //MongoDatabase mongoDb = MongoDb.GetDatabase();
+            //MongoDb.Populate(mongoDb);
 
             //Get all tests from collection "Tests" 
-            var tests = mongoDb.GetCollection<Test>("Tests").FindAll().ToList();
+            //var tests = mongoDb.GetCollection<Test>("Tests").FindAll().ToList();
             /*
              * sqlServer.getConection()
              * mongoDb.getConnection()
@@ -28,6 +28,12 @@ namespace AvalancheTester.Application
              * Console.WriteLine("Done"); */
 
             //PdfReport.PdfReport.CreatePdf("Testing PDF report!");
+
+            //ExcelTableHandler excel = new ExcelTableHandler();
+
+            ExcelTableHandler.ReadFromExcel();
+
+
         }
     }
 }
