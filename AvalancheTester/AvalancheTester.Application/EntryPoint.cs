@@ -8,10 +8,10 @@ namespace AvalancheTester.Application
             //MongoDatabase mongoDb = MongoDb.GetDatabase();
             //MongoDb.Populate(mongoDb);
 
-            using (UserReportsEntities db=new UserReportsEntities())
+            /*using (UserReportsEntities db=new UserReportsEntities())
             {
 
-            }
+            }*/
             //Get all tests from collection "Tests" 
             //var tests = mongoDb.GetCollection<Test>("Tests").FindAll().ToList();
             /*
@@ -39,9 +39,23 @@ namespace AvalancheTester.Application
 
 
             // Adding some data to the tables
-            //var dataGenerator = new ManualDataGenerator();
 
-            //dataGenerator.GenerateData();
+            /*var dataGenerator = new ManualDataGenerator();
+
+            dataGenerator.GenerateData();*/
+
+            /*var handler = new NewExcelTableHandler();
+
+            handler.InputDataToDatabase();*/
+
+            /*var dataGenerator = new ManualDataGenerator();
+
+            dataGenerator.GenerateData();*/
+
+            var newHandler = new NewExcelTableHandler();
+
+            newHandler.InputDataToDatabase();
+
         }
     }
 }

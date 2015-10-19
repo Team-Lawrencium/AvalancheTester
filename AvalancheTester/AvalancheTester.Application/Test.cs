@@ -20,13 +20,13 @@ namespace AvalancheTester.Application
             this.Organizations = new HashSet<Organization>();
         }
     
-        public int TetsId { get; set; }
+        public int TestId { get; set; }
         public string TestResults { get; set; }
         public int DangerLevel { get; set; }
         public System.Data.Entity.Spatial.DbGeography Position { get; set; }
         public int PlaceId { get; set; }
         public System.DateTime Date { get; set; }
-        public Nullable<double> Slope { get; set; }
+        public Nullable<int> Slope { get; set; }
         public int UserId { get; set; }
     
         public virtual Place Place { get; set; }
