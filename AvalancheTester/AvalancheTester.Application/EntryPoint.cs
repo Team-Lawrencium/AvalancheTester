@@ -1,6 +1,4 @@
 ﻿
-using AvalancheTester.Application.DbHandlers.MongoDb;
-using MongoDB.Driver;
 
 namespace AvalancheTester.Application
 {
@@ -8,8 +6,8 @@ namespace AvalancheTester.Application
     {
         static void Main()
         {
-            MongoDatabase mongoDb = MongoDb.GetDatabase();
-            MongoDb.Populate(mongoDb);
+            //MongoDatabase mongoDb = MongoDbDataGenerator.GetDatabase();
+            //MongoDbDataGenerator.Populate(mongoDb);
 
             /*using (UserReportsEntities db=new UserReportsEntities())
             {
@@ -58,6 +56,11 @@ namespace AvalancheTester.Application
             /*var newHandler = new NewExcelTableHandler();
 
             newHandler.InputDataToDatabase();*/
+
+
+            // Reading from MongoDb and writing to SQL Server db
+
+
 
         }
     }

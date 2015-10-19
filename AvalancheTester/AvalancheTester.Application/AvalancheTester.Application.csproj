@@ -95,10 +95,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AvalancheTestsDbEntities.edmx</DependentUpon>
     </Compile>
-    <Compile Include="DbHandlers\MongoDb\MongoDb.cs" />
-    <Compile Include="DbHandlers\MongoDb\Places.cs" />
-    <Compile Include="DbHandlers\MongoDb\Test.cs" />
-    <Compile Include="DbHandlers\MongoDb\User.cs" />
+    <Compile Include="DbHandlers\MongoDb\MongoDbController.cs" />
+    <Compile Include="DbHandlers\MongoDb\MongoDbDataGenerator.cs" />
+    <Compile Include="DbHandlers\MongoDb\MongoPlace.cs" />
+    <Compile Include="DbHandlers\MongoDb\MongoTest.cs" />
+    <Compile Include="DbHandlers\MongoDb\MongoUser.cs" />
+    <Compile Include="DbHandlers\MongoDb\PlaceEntitiesController.cs" />
     <Compile Include="EntryPoint.cs" />
     <Compile Include="ExcelTableHandler.cs" />
     <Compile Include="ManualDataGenerator.cs" />
