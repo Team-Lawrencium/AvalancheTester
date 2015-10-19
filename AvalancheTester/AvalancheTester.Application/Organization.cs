@@ -21,7 +21,7 @@ namespace AvalancheTester.Application
             this.Users = new HashSet<User>();
         }
     
-        public int OrganisationId { get; set; }
+        public int OrganizationId { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

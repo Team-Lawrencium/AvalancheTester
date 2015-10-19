@@ -10,8 +10,6 @@ namespace AvalancheTester.Application
 
             using (db)
             {
-                //var tests = db.Tests.Where(t => t.TetsId == 2).FirstOrDefault();
-
                 Place vitosha = new Place()
                 {
                     PlaceId = 1,
@@ -49,7 +47,7 @@ namespace AvalancheTester.Application
 
                 Organization rilaSport = new Organization()
                 {
-                    OrganisationId = 1,
+                    OrganizationId = 1,
                     Name = "Рила Спорт"
                 };
                 rilaSport.Users.Add(petar);
@@ -57,7 +55,7 @@ namespace AvalancheTester.Application
 
                 Organization hutAleko = new Organization()
                 {
-                    OrganisationId = 2,
+                    OrganizationId = 2,
                     Name = "Хижа Алеко"
                 };
                 hutAleko.Users.Add(ivan);
@@ -65,7 +63,7 @@ namespace AvalancheTester.Application
 
                 Test ivanTest = new Test()
                 {
-                    TetsId = 1,
+                    TestId = 1,
                     TestResults = "Компресионен тест 3 повторения: Слой 163-120 см. – СТ1, СТ3...",
                     DangerLevel = 3,
                     PlaceId = 1,
@@ -79,7 +77,7 @@ namespace AvalancheTester.Application
 
                 Test petarTest = new Test()
                 {
-                    TetsId = 2,
+                    TestId = 2,
                     TestResults = "Компресионен тест 2 повторения: Слой 154-120 см. – СТ1, СТ3...",
                     DangerLevel = 2,
                     PlaceId = 3,
