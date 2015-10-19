@@ -21,14 +21,12 @@ namespace AvalancheTester.Application.DbHandlers.MongoDb
             users.Insert(new User()
             {
                 Id = ObjectId.GenerateNewId().ToString(),
-                //Id = GenerateObjectId(),
                 Name = "Pe6o Petrov"
             });
 
             users.Insert(new User()
             {
                 Id = ObjectId.GenerateNewId().ToString(),
-                //Id = GenerateObjectId(),
                 Name = "Hristo Hristov Hristoskov"
             });
 
@@ -45,8 +43,8 @@ namespace AvalancheTester.Application.DbHandlers.MongoDb
                 TestResult = "Компресионен тест 2 повторения. Слой 163-154 см. – СТ1, СТ3; Сл...",
                 DangerLevel = 2,
                 Time = new DateTime(2015, 1, 13, 9, 48, 0),
-                Position = new GeoCoordinate(42.34356654335, 23.34356654335),
-                Slope = 45.6f
+                //Position = new GeoCoordinate(42.34356654335, 23.34356654335),
+                Slope = 23
             });
 
             tests.Insert(new Test()
@@ -56,6 +54,9 @@ namespace AvalancheTester.Application.DbHandlers.MongoDb
                 TestResult = "Компресионен тест: Слой 163-120 см. – СТ1, СТ3...",
                 DangerLevel = 5,
                 Time = new DateTime(2015, 2, 15, 9, 48, 0),
+                //Position = new GeoCoordinate(42.34356654335, 23.34356654335),
+                Slope = 23
+
             });
 
             var testsList = tests.FindAll().ToList();

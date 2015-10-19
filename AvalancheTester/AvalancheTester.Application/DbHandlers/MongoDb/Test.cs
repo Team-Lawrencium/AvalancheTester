@@ -1,10 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Device.Location;
 
 namespace AvalancheTester.Application.DbHandlers.MongoDb
@@ -28,6 +24,6 @@ namespace AvalancheTester.Application.DbHandlers.MongoDb
 
         public GeoCoordinate Position { get; set; }
 
-        public float Slope { get; set; }
+        public int Slope { get; set; }
     }
 }

@@ -1,12 +1,15 @@
 ﻿
+using AvalancheTester.Application.DbHandlers.MongoDb;
+using MongoDB.Driver;
+
 namespace AvalancheTester.Application
 {
     public class EntryPoint
     {
         static void Main()
         {
-            //MongoDatabase mongoDb = MongoDb.GetDatabase();
-            //MongoDb.Populate(mongoDb);
+            MongoDatabase mongoDb = MongoDb.GetDatabase();
+            MongoDb.Populate(mongoDb);
 
             /*using (UserReportsEntities db=new UserReportsEntities())
             {
@@ -28,7 +31,7 @@ namespace AvalancheTester.Application
              * 
              * Console.WriteLine("Done"); */
 
-            PdfReport.CreatePdf();
+            //PdfReport.CreatePdf();
 
             //ExcelTableHandler excel = new ExcelTableHandler();
 
@@ -52,9 +55,9 @@ namespace AvalancheTester.Application
 
             dataGenerator.GenerateData();*/
 
-            var newHandler = new NewExcelTableHandler();
+            /*var newHandler = new NewExcelTableHandler();
 
-            newHandler.InputDataToDatabase();
+            newHandler.InputDataToDatabase();*/
 
         }
     }
