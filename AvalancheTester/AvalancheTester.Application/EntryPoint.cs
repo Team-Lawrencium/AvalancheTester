@@ -1,6 +1,7 @@
 ﻿
 
 using AvalancheTester.Application.DbHandlers.MongoDb;
+using MongoDB.Driver;
 
 namespace AvalancheTester.Application
 {
@@ -8,8 +9,8 @@ namespace AvalancheTester.Application
     {
         static void Main()
         {
-            //MongoDatabase mongoDb = MongoDbDataGenerator.GetDatabase();
-            //MongoDbDataGenerator.Populate(mongoDb);
+            MongoDatabase mongoDb = MongoDbDataGenerator.GetDatabase();
+            MongoDbDataGenerator.Populate(mongoDb);
 
             /*using (UserReportsEntities db=new UserReportsEntities())
             {

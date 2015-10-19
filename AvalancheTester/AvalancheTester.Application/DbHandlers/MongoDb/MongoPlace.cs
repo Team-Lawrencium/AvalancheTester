@@ -12,8 +12,8 @@ namespace AvalancheTester.Application.DbHandlers.MongoDb
     // Populate from XML file
     public class MongoPlace
     {
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        [BsonRepresentation(BsonType.Int32)]
+        public int Id { get; set; }
 
         public string Name { get; set; }
         

@@ -18,7 +18,7 @@ namespace AvalancheTester.Application.DbHandlers.MongoDb
             {
                 foreach (var place in placesCollection)
                 {
-                    db.Places.Add(GetPersonFromPersonMongo(place));
+                    db.Places.Add(GetPlacesFromMongoPlaces(place));
                 }
 
                 db.SaveChanges();
@@ -28,9 +28,10 @@ namespace AvalancheTester.Application.DbHandlers.MongoDb
             Console.ReadLine();
         }
 
-        private Place GetPersonFromPersonMongo(MongoPlace mongoPlace)
+        private Place GetPlacesFromMongoPlaces(MongoPlace mongoPlace)
         {
             var place = new Place();
+            place.PlaceId = mongoPlace.Id;
             place.Name = mongoPlace.Name;
 
             return place;
