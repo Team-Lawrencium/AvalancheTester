@@ -24,7 +24,7 @@ namespace AvalancheTester.Application
              * 
              * Console.WriteLine("Done"); */
 
-            //PdfReport.PdfReport.CreatePdf("Testing PDF report!");
+            PdfReport.CreatePdf();
 
             //ExcelTableHandler excel = new ExcelTableHandler();
 
@@ -35,9 +35,9 @@ namespace AvalancheTester.Application
 
 
             // Adding some data to the tables
-            var dataGenerator = new ManualDataGenerator();
+            //var dataGenerator = new ManualDataGenerator();
 
-            dataGenerator.GenerateData();
+            //dataGenerator.GenerateData();
         }
     }
 }
