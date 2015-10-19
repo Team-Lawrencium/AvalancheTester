@@ -1,11 +1,8 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
-using System.Collections.Generic;
 using System.Device.Location;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AvalancheTester.Application.DbHandlers.MongoDb
 {
@@ -23,15 +20,15 @@ namespace AvalancheTester.Application.DbHandlers.MongoDb
 
             users.Insert(new User()
             {
-                //Id = ObjectId.GenerateNewId().ToString(),
-                Id = GenerateObjectId(),
+                Id = ObjectId.GenerateNewId().ToString(),
+                //Id = GenerateObjectId(),
                 Name = "Pe6o Petrov"
             });
 
             users.Insert(new User()
             {
-                //Id = ObjectId.GenerateNewId().ToString(),
-                Id = GenerateObjectId(),
+                Id = ObjectId.GenerateNewId().ToString(),
+                //Id = GenerateObjectId(),
                 Name = "Hristo Hristov Hristoskov"
             });
 
@@ -64,10 +61,10 @@ namespace AvalancheTester.Application.DbHandlers.MongoDb
             var testsList = tests.FindAll().ToList();
         }
 
-        public static string GenerateObjectId()
+       /* public static string GenerateObjectId()
         {
             return ObjectId.GenerateNewId().ToString();
-        }
+        }*/
 
         public static void ClearDatabase(MongoDatabase db)
         {
