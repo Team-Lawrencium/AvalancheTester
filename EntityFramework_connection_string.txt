@@ -1,0 +1,1 @@
+metadata=res://*/AvalancheTestsDbContext.csdl|res://*/AvalancheTestsDbContext.ssdl|res://*/AvalancheTestsDbContext.msl;provider=System.Data.SqlClient;provider connection string="data source=.;initial catalog=AvalancheTestsDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"

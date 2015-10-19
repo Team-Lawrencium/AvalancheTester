@@ -1,7 +1,4 @@
-﻿using AvalancheTester.Application.DbHandlers.MongoDb;
-using MongoDB.Driver;
-using System.Linq;
-
+﻿
 namespace AvalancheTester.Application
 {
     public class EntryPoint
@@ -31,10 +28,16 @@ namespace AvalancheTester.Application
 
             //ExcelTableHandler excel = new ExcelTableHandler();
 
-            ExcelTableHandler.ReadFromExcel();
+            //ExcelTableHandler.ReadFromExcel();
 
-            ExcelTableHandler.WriteInExcel("Бай Иван Хижара", "Рила", "Маркуджиците", 23.4f, "10.02.2015",
-                "Компресионен тест 3 повторения: Слой 163-120 см. – СТ1, СТ3...");
+            /*ExcelTableHandler.WriteInExcel("Бай Иван Хижара", "Рила", "Маркуджиците", 23.4f, "10.02.2015",
+                "Компресионен тест 3 повторения: Слой 163-120 см. – СТ1, СТ3...");*/
+
+
+            // Adding some data to the tables
+            var dataGenerator = new ManualDataGenerator();
+
+            dataGenerator.GenerateData();
         }
     }
 }

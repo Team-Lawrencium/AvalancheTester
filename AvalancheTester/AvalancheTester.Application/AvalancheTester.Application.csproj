@@ -32,6 +32,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MongoDB.Bson, Version=2.0.1.27, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MongoDB.Bson.2.0.1\lib\net45\MongoDB.Bson.dll</HintPath>
       <Private>True</Private>
@@ -49,9 +57,12 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Device" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,16 +70,51 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AvalancheTestsDbEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AvalancheTestsDbEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AvalancheTestsDbEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AvalancheTestsDbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AvalancheTestsDbEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AvalancheTestsDbEntities.edmx</DependentUpon>
+    </Compile>
     <Compile Include="DbHandlers\MongoDb\MongoDb.cs" />
     <Compile Include="DbHandlers\MongoDb\Places.cs" />
     <Compile Include="DbHandlers\MongoDb\Test.cs" />
     <Compile Include="DbHandlers\MongoDb\User.cs" />
     <Compile Include="EntryPoint.cs" />
     <Compile Include="ExcelTableHandler.cs" />
+    <Compile Include="ManualDataGenerator.cs" />
+    <Compile Include="Organization.cs">
+      <DependentUpon>AvalancheTestsDbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Place.cs">
+      <DependentUpon>AvalancheTestsDbEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test.cs">
+      <DependentUpon>AvalancheTestsDbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>AvalancheTestsDbEntities.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="AvalancheTestsDbEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AvalancheTestsDbEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="AvalancheTestsDbEntities.edmx.diagram">
+      <DependentUpon>AvalancheTestsDbEntities.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +122,21 @@
       <Project>{54924129-7d46-44f1-a368-b895c4dfce66}</Project>
       <Name>PdfReport</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AvalancheTestsDbEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AvalancheTestsDbEntities.edmx</DependentUpon>
+      <LastGenOutput>AvalancheTestsDbEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="AvalancheTestsDbEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AvalancheTestsDbEntities.edmx</DependentUpon>
+      <LastGenOutput>AvalancheTestsDbEntities.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

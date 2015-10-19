@@ -1,0 +1,349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AvalancheTestsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Organizations">
+          <Key>
+            <PropertyRef Name="OrganisationId" />
+          </Key>
+          <Property Name="OrganisationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Place">
+          <Key>
+            <PropertyRef Name="PlaceId" />
+          </Key>
+          <Property Name="PlaceId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Area" Type="geometry" />
+        </EntityType>
+        <EntityType Name="Tests">
+          <Key>
+            <PropertyRef Name="TetsId" />
+          </Key>
+          <Property Name="TetsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TestResults" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="DangerLevel" Type="int" Nullable="false" />
+          <Property Name="Position" Type="geography" />
+          <Property Name="PlaceId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Slope" Type="float" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tests Organisations">
+          <Key>
+            <PropertyRef Name="TestId" />
+            <PropertyRef Name="OrganisationId" />
+          </Key>
+          <Property Name="TestId" Type="int" Nullable="false" />
+          <Property Name="OrganisationId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Users Organisations">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="OrganisationId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="OrganisationId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Tests Organisations_Organizations">
+          <End Role="Organizations" Type="Self.Organizations" Multiplicity="1" />
+          <End Role="Tests Organisations" Type="Self.Tests Organisations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organizations">
+              <PropertyRef Name="OrganisationId" />
+            </Principal>
+            <Dependent Role="Tests Organisations">
+              <PropertyRef Name="OrganisationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tests Organisations_Tests">
+          <End Role="Tests" Type="Self.Tests" Multiplicity="1" />
+          <End Role="Tests Organisations" Type="Self.Tests Organisations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tests">
+              <PropertyRef Name="TetsId" />
+            </Principal>
+            <Dependent Role="Tests Organisations">
+              <PropertyRef Name="TestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tests_Place">
+          <End Role="Place" Type="Self.Place" Multiplicity="1" />
+          <End Role="Tests" Type="Self.Tests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Place">
+              <PropertyRef Name="PlaceId" />
+            </Principal>
+            <Dependent Role="Tests">
+              <PropertyRef Name="PlaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tests_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Tests" Type="Self.Tests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Tests">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users Organisations_Organizations">
+          <End Role="Organizations" Type="Self.Organizations" Multiplicity="1" />
+          <End Role="Users Organisations" Type="Self.Users Organisations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organizations">
+              <PropertyRef Name="OrganisationId" />
+            </Principal>
+            <Dependent Role="Users Organisations">
+              <PropertyRef Name="OrganisationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users Organisations_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Users Organisations" Type="Self.Users Organisations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Users Organisations">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AvalancheTestsDBModelStoreContainer">
+          <EntitySet Name="Organizations" EntityType="Self.Organizations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Place" EntityType="Self.Place" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tests" EntityType="Self.Tests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tests Organisations" EntityType="Self.Tests Organisations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users Organisations" EntityType="Self.Users Organisations" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Tests Organisations_Organizations" Association="Self.FK_Tests Organisations_Organizations">
+            <End Role="Organizations" EntitySet="Organizations" />
+            <End Role="Tests Organisations" EntitySet="Tests Organisations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tests Organisations_Tests" Association="Self.FK_Tests Organisations_Tests">
+            <End Role="Tests" EntitySet="Tests" />
+            <End Role="Tests Organisations" EntitySet="Tests Organisations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tests_Place" Association="Self.FK_Tests_Place">
+            <End Role="Place" EntitySet="Place" />
+            <End Role="Tests" EntitySet="Tests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tests_Users" Association="Self.FK_Tests_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Tests" EntitySet="Tests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users Organisations_Organizations" Association="Self.FK_Users Organisations_Organizations">
+            <End Role="Organizations" EntitySet="Organizations" />
+            <End Role="Users Organisations" EntitySet="Users Organisations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users Organisations_Users" Association="Self.FK_Users Organisations_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Users Organisations" EntitySet="Users Organisations" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AvalancheTestsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Organization">
+          <Key>
+            <PropertyRef Name="OrganisationId" />
+          </Key>
+          <Property Name="OrganisationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Tests" Relationship="Self.Tests_Organisations" FromRole="Organizations" ToRole="Tests" />
+          <NavigationProperty Name="Users" Relationship="Self.Users_Organisations" FromRole="Organizations" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Place">
+          <Key>
+            <PropertyRef Name="PlaceId" />
+          </Key>
+          <Property Name="PlaceId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Area" Type="Geometry" />
+          <NavigationProperty Name="Tests" Relationship="Self.FK_Tests_Place" FromRole="Place" ToRole="Tests" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="TetsId" />
+          </Key>
+          <Property Name="TetsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TestResults" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DangerLevel" Type="Int32" Nullable="false" />
+          <Property Name="Position" Type="Geography" />
+          <Property Name="PlaceId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Slope" Type="Double" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Place" Relationship="Self.FK_Tests_Place" FromRole="Tests" ToRole="Place" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Tests_Users" FromRole="Tests" ToRole="Users" />
+          <NavigationProperty Name="Organizations" Relationship="Self.Tests_Organisations" FromRole="Tests" ToRole="Organizations" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tests" Relationship="Self.FK_Tests_Users" FromRole="Users" ToRole="Tests" />
+          <NavigationProperty Name="Organizations" Relationship="Self.Users_Organisations" FromRole="Users" ToRole="Organizations" />
+        </EntityType>
+        <Association Name="FK_Tests_Place">
+          <End Role="Place" Type="Self.Place" Multiplicity="1" />
+          <End Role="Tests" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Place">
+              <PropertyRef Name="PlaceId" />
+            </Principal>
+            <Dependent Role="Tests">
+              <PropertyRef Name="PlaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tests_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Tests" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Tests">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Tests_Organisations">
+          <End Role="Organizations" Type="Self.Organization" Multiplicity="*" />
+          <End Role="Tests" Type="Self.Test" Multiplicity="*" />
+        </Association>
+        <Association Name="Users_Organisations">
+          <End Role="Organizations" Type="Self.Organization" Multiplicity="*" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="AvalancheTestsDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Organizations" EntityType="Self.Organization" />
+          <EntitySet Name="Places" EntityType="Self.Place" />
+          <EntitySet Name="Tests" EntityType="Self.Test" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_Tests_Place" Association="Self.FK_Tests_Place">
+            <End Role="Place" EntitySet="Places" />
+            <End Role="Tests" EntitySet="Tests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tests_Users" Association="Self.FK_Tests_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Tests" EntitySet="Tests" />
+          </AssociationSet>
+          <AssociationSet Name="Tests_Organisations" Association="Self.Tests_Organisations">
+            <End Role="Organizations" EntitySet="Organizations" />
+            <End Role="Tests" EntitySet="Tests" />
+          </AssociationSet>
+          <AssociationSet Name="Users_Organisations" Association="Self.Users_Organisations">
+            <End Role="Organizations" EntitySet="Organizations" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AvalancheTestsDBModelStoreContainer" CdmEntityContainer="AvalancheTestsDbEntities">
+          <EntitySetMapping Name="Organizations">
+            <EntityTypeMapping TypeName="AvalancheTestsDBModel.Organization">
+              <MappingFragment StoreEntitySet="Organizations">
+                <ScalarProperty Name="OrganisationId" ColumnName="OrganisationId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Places">
+            <EntityTypeMapping TypeName="AvalancheTestsDBModel.Place">
+              <MappingFragment StoreEntitySet="Place">
+                <ScalarProperty Name="PlaceId" ColumnName="PlaceId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tests">
+            <EntityTypeMapping TypeName="AvalancheTestsDBModel.Test">
+              <MappingFragment StoreEntitySet="Tests">
+                <ScalarProperty Name="TetsId" ColumnName="TetsId" />
+                <ScalarProperty Name="TestResults" ColumnName="TestResults" />
+                <ScalarProperty Name="DangerLevel" ColumnName="DangerLevel" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="PlaceId" ColumnName="PlaceId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Slope" ColumnName="Slope" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="AvalancheTestsDBModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Tests_Organisations" TypeName="AvalancheTestsDBModel.Tests_Organisations" StoreEntitySet="Tests Organisations">
+            <EndProperty Name="Organizations">
+              <ScalarProperty Name="OrganisationId" ColumnName="OrganisationId" />
+            </EndProperty>
+            <EndProperty Name="Tests">
+              <ScalarProperty Name="TetsId" ColumnName="TestId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Users_Organisations" TypeName="AvalancheTestsDBModel.Users_Organisations" StoreEntitySet="Users Organisations">
+            <EndProperty Name="Organizations">
+              <ScalarProperty Name="OrganisationId" ColumnName="OrganisationId" />
+            </EndProperty>
+            <EndProperty Name="Users">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
