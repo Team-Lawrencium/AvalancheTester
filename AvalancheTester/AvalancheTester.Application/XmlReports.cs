@@ -10,7 +10,7 @@ namespace AvalancheTester.Application
 {
     public class XmlReports
     {
-        private const string path = "../../../XML reports/xml-report.xml";
+        private const string path = "../../../XML reports/";
 
         public void LastMonth(Place place, DateTime today)
         {
