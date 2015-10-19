@@ -56,6 +56,7 @@
       <HintPath>..\packages\mongocsharpdriver.2.0.1\lib\net45\MongoDB.Driver.Legacy.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -105,9 +106,29 @@
     <Compile Include="User.cs">
       <DependentUpon>AvalancheTestsDbEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="userorganisation.cs">
+      <DependentUpon>UserReportsMySQL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserReportsMySQL.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserReportsMySQL.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserReportsMySQL.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserReportsMySQL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserReportsMySQL.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserReportsMySQL.edmx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="AvalancheTestsDbEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AvalancheTestsDbEntities.Designer.cs</LastGenOutput>
@@ -116,6 +137,13 @@
       <DependentUpon>AvalancheTestsDbEntities.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <EntityDeploy Include="UserReportsMySQL.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UserReportsMySQL.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="UserReportsMySQL.edmx.diagram">
+      <DependentUpon>UserReportsMySQL.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PdfReport\PdfReport.csproj">
@@ -136,6 +164,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AvalancheTestsDbEntities.edmx</DependentUpon>
       <LastGenOutput>AvalancheTestsDbEntities.cs</LastGenOutput>
+    </Content>
+    <Content Include="UserReportsMySQL.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UserReportsMySQL.edmx</DependentUpon>
+      <LastGenOutput>UserReportsMySQL.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="UserReportsMySQL.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UserReportsMySQL.edmx</DependentUpon>
+      <LastGenOutput>UserReportsMySQL.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
