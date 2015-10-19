@@ -135,6 +135,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UserReportsEntitiesMySQL.edmx</DependentUpon>
     </Compile>
+    <Compile Include="XmlReports.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

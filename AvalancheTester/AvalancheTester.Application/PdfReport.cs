@@ -20,7 +20,7 @@
                 Date = t.Date,
                 UsersTestCount = t.User.Tests.Count
             })
-                .GroupBy(gr => gr.Date.Year)
+                .GroupBy(gr => new {gr.Date.Year, gr.Date.Month })//new {gr.Date.Year, gr.Date.Month }
                 .ToList();
 
             //Bad performance! Try without ToList.
@@ -39,13 +39,14 @@
 
             doc.Open();
 
+            
             var table = new PdfPTable(1);
             table.AddCell("Annual User Tests Report");
             doc.Add(Chunk.NEWLINE);
 
             foreach (var gr in groupsTests)
             {
-                table.AddCell(gr.Key.ToString());
+                table.AddCell(gr.Key.Year.ToString()+"-"+gr.Key.Month.ToString());
                 doc.Add(Chunk.NEWLINE);
 
                 var innerTable = new PdfPTable(5);
