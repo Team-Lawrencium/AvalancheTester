@@ -5,6 +5,8 @@ using MongoDB.Driver;
 
 namespace AvalancheTester.Application
 {
+    using ParsingXML;
+
     public class EntryPoint
     {
         static void Main()
@@ -66,6 +68,7 @@ namespace AvalancheTester.Application
             var mongoPlaceEntitiesController = new PlaceEntitiesController();
             mongoPlaceEntitiesController.UploadMongoPlacesToSql();
 
+            XmlImporter.ImportToDb("../../XML/places.xml");
         }
     }
 }
