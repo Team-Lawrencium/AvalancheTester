@@ -1,13 +1,15 @@
 ﻿namespace AvalancheTester.Application
 {
-    using System;
-    using System.IO;
-    using System.Linq;
     using iTextSharp.text;
     using iTextSharp.text.pdf;
+    using System.IO;
+    using System.Linq;
 
     public static class PdfReport
     {
+        private const string PdfReportFilePath = "../../../PDF Reports/AvalancheTestReport.pdf";
+        private const int NumberOfColumns = 1;
+
         public static void CreatePdf()
         {
             var db = new AvalancheTestsDbEntities();
@@ -20,27 +22,16 @@
                 Date = t.Date,
                 UsersTestCount = t.User.Tests.Count
             })
-                .GroupBy(gr => new { gr.Date.Year, gr.Date.Month })//new {gr.Date.Year, gr.Date.Month }
+                .GroupBy(gr => new { gr.Date.Year, gr.Date.Month })
                 .ToList();
 
-            //Bad performance! Try without ToList.
-            /*var groupsTests2 = db.Users.Select(u => new
-            {
-                UserName = u.Name,
-                Memberships = u.Organizations.Select(o => o.Name),
-                Locations = u.Tests.Select(t => t.Place.Name),
-                Count=u.Tests.Count
-
-            }).GroupBy();*/
-
-            FileStream fileStream = new FileStream("../../../PDF Reports/AvalancheTestReport.pdf", FileMode.Create, FileAccess.Write, FileShare.None);
+            FileStream fileStream = new FileStream(PdfReportFilePath, FileMode.Create, FileAccess.Write, FileShare.None);
             Document doc = new Document();
             PdfWriter pdfWriter = PdfWriter.GetInstance(doc, fileStream);
 
             doc.Open();
 
-
-            var table = new PdfPTable(1);
+            var table = new PdfPTable(NumberOfColumns);
             table.AddCell("Annual User Tests Report");
             doc.Add(Chunk.NEWLINE);
 
@@ -54,7 +45,6 @@
                 innerTable.AddCell("User Name");
                 innerTable.AddCell("User Memberships");
                 innerTable.AddCell("Locations");
-                //innerTable.AddCell("Date");
                 innerTable.AddCell("Tests count");
 
                 foreach (var item in gr)
@@ -62,7 +52,6 @@
                     innerTable.AddCell(item.Name.ToString());
                     innerTable.AddCell(string.Join(", ", item.UserMemberships) + " ");
                     innerTable.AddCell(string.Join(", ", item.Locations) + " ");
-                    //innerTable.AddCell(item.Date.ToString());
                     innerTable.AddCell(item.UsersTestCount.ToString());
                 }
 
@@ -72,6 +61,5 @@
             doc.Add(table);
             doc.Close();
         }
-
     }
 }

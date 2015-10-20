@@ -55,7 +55,6 @@ namespace AvalancheTester.Application
 
         private static void XmlSerializeResult(dynamic tests, string fileName)
         {
-            //var serializer = new JsonSerializer();
             var xmlSerializer = new XmlSerializer(tests.GetType());
             StreamWriter file = new StreamWriter(path + fileName);
 

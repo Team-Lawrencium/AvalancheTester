@@ -1,25 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using System;
 using System.IO;
+using System.Linq;
 
 namespace AvalancheTester.Application
 {
     public static class JsonReports
     {
-        private const string path = "../../../Json reports/";
+        private const string path = "../../Json reports/JasonReport.json";
         public static void CreateReports()
         {
             var db = new AvalancheTestsDbEntities();
 
             var userReports = db.Users.Select(u => new
             {
-                u.UserId,
-                Name = u.Name,
-                u.Organizations
+                UserId = u.UserId,
+                Name = u.Name
             })
             .ToList();
 
@@ -27,11 +23,12 @@ namespace AvalancheTester.Application
 
             foreach (var user in userReports)
             {
-                StreamWriter file = new StreamWriter(path + user.Name + ".json");
+                StreamWriter file = new StreamWriter(path);
                 serializer.Serialize(file, user);
-                //add to MySQL
                 file.Close();
             }
+
+            Console.WriteLine("Json report generated!");
         }
     }
 }

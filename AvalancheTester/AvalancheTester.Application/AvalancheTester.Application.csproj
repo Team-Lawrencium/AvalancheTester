@@ -106,10 +106,9 @@
     <Compile Include="DbHandlers\MongoDb\MongoUser.cs" />
     <Compile Include="DbHandlers\MongoDb\PlaceEntitiesController.cs" />
     <Compile Include="EntryPoint.cs" />
-    <Compile Include="ExcelTableHandler.cs" />
     <Compile Include="JsonReports.cs" />
     <Compile Include="ManualDataGenerator.cs" />
-    <Compile Include="NewExcelTableHandler.cs" />
+    <Compile Include="ExcelTableHandler.cs" />
     <Compile Include="Organization.cs">
       <DependentUpon>AvalancheTestsDbEntities.tt</DependentUpon>
     </Compile>
@@ -142,6 +141,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UserReportsEntitiesMySQL.edmx</DependentUpon>
     </Compile>
+    <Compile Include="XmlImporter.cs" />
     <Compile Include="XmlReports.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -152,9 +152,11 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AvalancheTestsDbEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Avalanche-Tests-Reports.zip" />
     <None Include="AvalancheTestsDbEntities.edmx.diagram">
       <DependentUpon>AvalancheTestsDbEntities.edmx</DependentUpon>
     </None>
+    <None Include="DailyTestReportsOutput.xlsx" />
     <None Include="packages.config" />
     <EntityDeploy Include="UserReportsEntitiesMySQL.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -188,6 +190,10 @@
       <DependentUpon>UserReportsEntitiesMySQL.edmx</DependentUpon>
       <LastGenOutput>UserReportsMySQL.cs</LastGenOutput>
     </Content>
+    <Content Include="XML\places.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="XML Reports\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

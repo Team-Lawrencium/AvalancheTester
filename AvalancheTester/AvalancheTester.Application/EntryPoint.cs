@@ -15,8 +15,7 @@ namespace AvalancheTester.Application
     {
         static void Main()
         {
-            MongoDatabase mongoDb = MongoDbDataGenerator.GetDatabase();
-            MongoDbDataGenerator.Populate(mongoDb);
+            
 
             /*using (UserReportsEntities db=new UserReportsEntities())
             {
@@ -24,8 +23,7 @@ namespace AvalancheTester.Application
             }*/
             //Get all tests from collection "Tests" 
             //var tests = mongoDb.GetCollection<Test>("Tests").FindAll().ToList();
-            /*
-             * sqlServer.getConection()
+             /** sqlServer.getConection()
              * mongoDb.getConnection()
              * var mongoData = mongo.getData()
              * sqlServer.putData(mongoData)
@@ -38,42 +36,41 @@ namespace AvalancheTester.Application
              * 
              * Console.WriteLine("Done"); */
 
-            //PdfReport.CreatePdf();
-
-            //ExcelTableHandler excel = new ExcelTableHandler();
-
-            //ExcelTableHandler.ReadFromExcel();
-
-            /*ExcelTableHandler.WriteInExcel("Бай Иван Хижара", "Рила", "Маркуджиците", 23.4f, "10.02.2015",
-                "Компресионен тест 3 повторения: Слой 163-120 см. – СТ1, СТ3...");*/
-
-
             // Adding some data to the tables
 
-            var dataGenerator = new ManualDataGenerator();
+            //var dataGenerator = new ManualDataGenerator();
 
             //dataGenerator.GenerateData();
-
-            /*var handler = new NewExcelTableHandler();
-
-            handler.InputDataToDatabase();*/
 
             /*var dataGenerator = new ManualDataGenerator();
 
             dataGenerator.GenerateData();*/
 
-            //var newHandler = new NewExcelTableHandler();
+            // Reading form Excel 2003 files in Zip archive and adding data to SQL Server Database
+            /*var excelTableHandler = new ExcelTableHandler();
+            excelTableHandler.InputDataToDatabase();*/
 
-            //newHandler.InputDataToDatabase();
+            // Write manually added data in Excel 2007 file
+            /*ExcelTableHandler.WriteInExcel("Бай Иван Хижара", "Рила", "Маркуджиците", 23, "10.02.2015",
+                "Компресионен тест 3 повторения: Слой 163-120 см. – СТ1, СТ3...");*/
+            //-------------------------------------------------------------------
 
 
             // Reading from MongoDb and writing to SQL Server db
+            // Firts - generate some data
+            /*MongoDatabase mongoDb = MongoDbDataGenerator.GetDatabase();
+            MongoDbDataGenerator.Populate(mongoDb);*/
 
-            //var mongoPlaceEntitiesController = new PlaceEntitiesController();
-            //mongoPlaceEntitiesController.UploadMongoPlacesToSql();
+            /*var mongoPlaceEntitiesController = new PlaceEntitiesController();
+            mongoPlaceEntitiesController.UploadMongoPlacesToSql();*/
 
-            PdfReport.CreatePdf();
+            // Problem 2 - Create PDF report
+            //PdfReport.CreatePdf();
+
+            // Problem 3 - Generate XML report - doesn't work
             //XmlReports.LastMonth(new Place { Name = "Rila" }, DateTime.Now);
+
+            // Problem 4 - Json Reports
             JsonReports.CreateReports();
 
             //XmlImporter.ImportToDb("../../XML/places.xml");

@@ -13,21 +13,21 @@ namespace AvalancheTester.Application
                 Place vitosha = new Place()
                 {
                     PlaceId = 1,
-                    Name = "Vitosha"
+                    Name = "Витоша"
                 };
                 db.Places.Add(vitosha);
 
                 Place pirin = new Place()
                 {
                     PlaceId = 2,
-                    Name = "Pirin"
+                    Name = "Пирин"
                 };
                 db.Places.Add(pirin);
 
                 Place rila = new Place()
                 {
                     PlaceId = 3,
-                    Name = "Rila"
+                    Name = "Рила"
                 };
                 db.Places.Add(rila);
 

@@ -1,53 +1,114 @@
 ﻿using System;
 using System.Data;
 using System.Data.OleDb;
+using System.Data.SqlClient;
+using System.IO;
+using System.IO.Compression;
 
 namespace AvalancheTester.Application
 {
     public class ExcelTableHandler
     {
-        private const string InputFilepath = "../../DailyTestReports.xlsx";
+        private const string UnzipedReportsDirectory = "../../Avalanche-Tests-Reports";
 
-        private const string InputFileConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source="
-                                                + InputFilepath + ";Extended Properties='Excel 12.0 xml;HDR=Yes';";
+        private const string ZipFileName = "../../Avalanche-Tests-Reports.zip";
+
+        private const string ExcelQuery = "SELECT * FROM [Sheet1$]";
 
         private const string OutputFilepath = "../../DailyTestReportsOutput.xlsx";
 
         private const string OutputFileConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source="
-                                                + OutputFilepath + ";Extended Properties='Excel 12.0 xml;HDR=Yes';";
+                                                + OutputFilepath + ";Extended Properties='Excel 12.0 xml;HDR=No';";
 
-        public static void ReadFromExcel()
+        public ExcelTableHandler()
+            :this(".", "AvalancheTestsDB", "Tests")
         {
-            OleDbConnection excelConnection = new OleDbConnection(InputFileConnectionString);
+        }
 
-            using (excelConnection)
+        public ExcelTableHandler(string serverName, string databaseName, string tableName)
+        {
+            this.ServerName = serverName;
+            this.DatabaseName = databaseName;
+            this.TableName = tableName;
+        }
+
+        public string ServerName { get; set; }
+
+        public string DatabaseName { get; set; }
+
+        public string TableName { get; set; }
+
+        public void InputDataToDatabase()
+        {
+            var handler = new ExcelTableHandler();
+
+            Console.WriteLine("Extracting reports from zip file...");
+
+            if (Directory.Exists(UnzipedReportsDirectory))
             {
-                excelConnection.Open();
+                Directory.Delete(UnzipedReportsDirectory, true);
+            }
 
-                DataTable tableSchema = excelConnection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+            ZipFile.ExtractToDirectory(ZipFileName, UnzipedReportsDirectory);
+            Console.WriteLine("Extracting completed!");
 
-                string sheetName = tableSchema.Rows[0]["TABLE_NAME"].ToString();
+            string reportsFullPath = Path.GetFullPath(UnzipedReportsDirectory);
+            foreach (var dir in Directory.GetDirectories(reportsFullPath))
+            {
+                Console.WriteLine(dir);
+                handler.GetReportsFromDirectory(dir);
+                Console.WriteLine("Reports adding in SQL Server database...");
+            }
 
-                OleDbCommand command = new OleDbCommand("SELECT * FROM [" + sheetName + "]", excelConnection);
+            Directory.Delete(reportsFullPath, true);
 
-                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(command);
+            Console.WriteLine("Adding Reports from zip file completed!");
+        }
 
-                using (dataAdapter)
+        private void GetReportsFromDirectory(string dir)
+        {
+            foreach (var file in Directory.GetFiles(dir))
+            {
+                Console.WriteLine("I am in");
+                this.ImportDataFromExcel(file);
+            }
+        }
+
+        private void ImportDataFromExcel(string excelFilePath)
+        {
+            string excelConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + excelFilePath
+                                           + ";Extended Properties=\"Excel 8.0;HDR=YES;\"";
+            string sqlConnectionString = "Server=" + this.ServerName + "; Database=" + this.DatabaseName
+                                         + "; Integrated Security=true";
+
+            using (var oleDbConnection = new OleDbConnection(excelConnectionString))
+            using (var sqlBulkCopy = new SqlBulkCopy(sqlConnectionString, SqlBulkCopyOptions.Default))
+            {
+                oleDbConnection.Open();
+
+                var oleDbCommand = new OleDbCommand(ExcelQuery, oleDbConnection);
+                var oleDbDataReader = oleDbCommand.ExecuteReader();
+
+                var table = new DataTable();
+                if (oleDbDataReader != null)
                 {
-                    DataSet dataSet = new DataSet();
+                    table.Load(oleDbDataReader);
+                }
 
-                    dataAdapter.Fill(dataSet);
+                sqlBulkCopy.DestinationTableName = this.TableName;
+                foreach (DataColumn col in table.Columns)
+                {
+                    sqlBulkCopy.ColumnMappings.Add(col.ColumnName, col.ColumnName);
+                    Console.WriteLine(col.ColumnName);
+                }
 
-                    using (var reader = dataSet.CreateDataReader())
-                    {
-                        while (reader.Read())
-                        {
-                            //Console.WriteLine("{0} has a score of {1}", reader["Name"], reader["Score"]);
-                            Console.WriteLine(
-                                string.Format("TesterName: {0}, PlaceName: {1}, PlaceArea: {2}, Slope: {3}, Date: {4}, TestResult: {5}",
-                                reader["TesterName"], reader["PlaceName"], reader["PlaceArea"], reader["Slope"], reader["Date"], reader["TestResult"]));
-                        }
-                    }
+                try
+                {
+                    sqlBulkCopy.WriteToServer(table);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
                 }
             }
         }
@@ -78,7 +139,6 @@ namespace AvalancheTester.Application
 
                 Console.WriteLine("Added new row!");
             }
-            
         }
     }
 }
