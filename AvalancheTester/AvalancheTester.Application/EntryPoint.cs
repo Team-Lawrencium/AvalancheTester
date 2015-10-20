@@ -3,6 +3,8 @@
 
 namespace AvalancheTester.Application
 {
+    using ParsingXML;
+
     //using ParsingXML;
 
     public class EntryPoint
@@ -40,7 +42,7 @@ namespace AvalancheTester.Application
             //JsonReports.CreateReports();
 
             // Problem 5 - Load data form XML
-            //XmlImporter.ImportToDb("../../XML/places.xml");
+            XmlImporter.ImportToDb("../../XML/places.xml");
 
             // Problem 6
             // Write manually added data in Excel 2007 file

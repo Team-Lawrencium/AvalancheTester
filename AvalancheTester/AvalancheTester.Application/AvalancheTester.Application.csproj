@@ -124,7 +124,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="NewExcelTableHandler.cs" />
     <Compile Include="Organization.cs">
       <DependentUpon>AvalancheTestsDbEntities.tt</DependentUpon>
     </Compile>
@@ -142,6 +141,8 @@
     <Compile Include="userorganisations.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="XmlImporter.cs" />
+    <Compile Include="XmlParser.cs" />
     <Compile Include="XmlReports.cs" />
   </ItemGroup>
   <ItemGroup>
