@@ -39,11 +39,11 @@ namespace AvalancheTester.Application
                         UserOrganisations1=string.Join(", ", user.Organizations)
                     };
 
-                    MySqlDb.userorganisations.Add(userOrganisations);
+                    //MySqlDb.userorganisations.Add(userOrganisations);
                     
                 }
 
-                MySqlDb.SaveChanges();
+                //MySqlDb.SaveChanges();
             }
         }
     }
