@@ -1,10 +1,7 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace AvalancheTester.Application
@@ -55,7 +52,6 @@ namespace AvalancheTester.Application
 
         private static void XmlSerializeResult(dynamic tests, string fileName)
         {
-            //var serializer = new JsonSerializer();
             var xmlSerializer = new XmlSerializer(tests.GetType());
             StreamWriter file = new StreamWriter(path + fileName);
 

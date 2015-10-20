@@ -34,21 +34,21 @@ namespace AvalancheTester.Application
                 User ivan = new User()
                 {
                     UserId = 1,
-                    Name = "Бай Иван Хижаря"
+                    Name = "Ivan Georgiev"
                 };
                 db.Users.Add(ivan);
 
                 User petar = new User()
                 {
                     UserId = 2,
-                    Name = "Петър Попангелов",
+                    Name = "Petar Popangelov",
                 };
                 db.Users.Add(petar);
 
                 Organization rilaSport = new Organization()
                 {
                     OrganizationId = 1,
-                    Name = "Рила Спорт"
+                    Name = "Rila Sport"
                 };
                 rilaSport.Users.Add(petar);
                 db.Organizations.Add(rilaSport);
@@ -56,7 +56,7 @@ namespace AvalancheTester.Application
                 Organization hutAleko = new Organization()
                 {
                     OrganizationId = 2,
-                    Name = "Хижа Алеко"
+                    Name = "Aleko Hut"
                 };
                 hutAleko.Users.Add(ivan);
                 db.Organizations.Add(hutAleko);
@@ -64,7 +64,7 @@ namespace AvalancheTester.Application
                 Test ivanTest = new Test()
                 {
                     TestId = 1,
-                    TestResults = "Компресионен тест 3 повторения: Слой 163-120 см. – СТ1, СТ3...",
+                    TestResults = "Compression test 123",
                     DangerLevel = 3,
                     PlaceId = 1,
                     UserId = 1,
@@ -78,7 +78,7 @@ namespace AvalancheTester.Application
                 Test petarTest = new Test()
                 {
                     TestId = 2,
-                    TestResults = "Компресионен тест 2 повторения: Слой 154-120 см. – СТ1, СТ3...",
+                    TestResults = "Compression test 5642",
                     DangerLevel = 2,
                     PlaceId = 3,
                     UserId = 2,
