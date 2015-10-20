@@ -8,10 +8,10 @@ using System.IO;
 
 namespace AvalancheTester.Application
 {
-    public class JsonReports
+    public static class JsonReports
     {
         private const string path = "../../../Json reports/";
-        public void CreateReports()
+        public static void CreateReports()
         {
             var db = new AvalancheTestsDbEntities();
 

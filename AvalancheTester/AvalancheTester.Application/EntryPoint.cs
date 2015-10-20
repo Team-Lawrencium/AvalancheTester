@@ -74,6 +74,7 @@ namespace AvalancheTester.Application
 
             PdfReport.CreatePdf();
             //XmlReports.LastMonth(new Place { Name = "Rila" }, DateTime.Now);
+            JsonReports.CreateReports();
 
             //XmlImporter.ImportToDb("../../XML/places.xml");
         }
