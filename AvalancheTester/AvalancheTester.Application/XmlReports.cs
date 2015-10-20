@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,51 +9,55 @@ using System.Xml.Serialization;
 
 namespace AvalancheTester.Application
 {
-    public class XmlReports
+    public static class XmlReports
     {
         private const string path = "../../../XML reports/";
 
-        public void LastMonth(Place place, DateTime today)
+        public static void LastMonth(Place place, DateTime today)
         {
             AvalancheTestsDbEntities db = new AvalancheTestsDbEntities();
 
+            var startDate = today.AddMonths(-1);
             List<Test> tests = db.Tests
                 .Where(t => t.Place.Name == place.Name)
-                .Where(t => (t.Date >= today.AddMonths(-1) && t.Date <= today))
+                .Where(t => (t.Date >= startDate && t.Date <= today))
                 .ToList();
 
-            this.XmlSerializeResult(tests, "monthly-tests-"+place.Name+".xml");
+            XmlSerializeResult(tests, "monthly-tests-" + place.Name + ".xml");
         }
 
-        public void LastWeek(Place place, DateTime today)
+        public static void LastWeek(Place place, DateTime today)
         {
             AvalancheTestsDbEntities db = new AvalancheTestsDbEntities();
 
+            var startDate = today.AddDays(-7);
             List<Test> tests = db.Tests
                 .Where(t => t.Place.Name == place.Name)
-                .Where(t => (t.Date >= today.AddDays(-7) && t.Date <= today))
+                .Where(t => (t.Date >= startDate && t.Date <= today))
                 .ToList();
 
-            this.XmlSerializeResult(tests, "weekly-tests-"+place.Name+".xml");
+            XmlSerializeResult(tests, "weekly-tests-" + place.Name + ".xml");
         }
 
-        public void LastYear(Place place, DateTime today)
+        public static void LastYear(Place place, DateTime today)
         {
             AvalancheTestsDbEntities db = new AvalancheTestsDbEntities();
 
+            var startDate = today.AddYears(-1);
             var tests = db.Tests
                 .Where(t => t.Place.Name == place.Name)
-                .Where(t => (t.Date >= today.AddYears(-1) && t.Date <= today))
-                .GroupBy(gr => new {gr.Date.Year, gr.Date.Month })
+                .Where(t => (t.Date >= startDate && t.Date <= today))
+                .GroupBy(gr => new { gr.Date.Year, gr.Date.Month })
                 .ToList();
 
-            this.XmlSerializeResult(tests, "yearly-tests-"+place.Name+".xml");
+            XmlSerializeResult(tests, "yearly-tests-" + place.Name + ".xml");
         }
 
-        private void XmlSerializeResult(dynamic tests, string fileName)
+        private static void XmlSerializeResult(dynamic tests, string fileName)
         {
-             var xmlSerializer=new XmlSerializer(tests.GetType());
-            StreamWriter file = new StreamWriter(path);
+            //var serializer = new JsonSerializer();
+            var xmlSerializer = new XmlSerializer(tests.GetType());
+            StreamWriter file = new StreamWriter(path + fileName);
 
             xmlSerializer.Serialize(file, tests);
         }

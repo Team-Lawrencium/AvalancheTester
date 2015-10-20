@@ -15,12 +15,12 @@
             var groupsTests = db.Tests.Select(t => new
             {
                 Name = t.User.Name,
-                UserMemberships = t.Organizations.Select(o =>  o.Name),
-                Locations = t.User.Tests.Select(t2=>t2.Place.Name),
+                UserMemberships = t.Organizations.Select(o => o.Name),
+                Locations = t.User.Tests.Select(t2 => t2.Place.Name),
                 Date = t.Date,
                 UsersTestCount = t.User.Tests.Count
             })
-                .GroupBy(gr => new {gr.Date.Year, gr.Date.Month })//new {gr.Date.Year, gr.Date.Month }
+                .GroupBy(gr => new { gr.Date.Year, gr.Date.Month })//new {gr.Date.Year, gr.Date.Month }
                 .ToList();
 
             //Bad performance! Try without ToList.
@@ -39,18 +39,17 @@
 
             doc.Open();
 
-            
+
             var table = new PdfPTable(1);
             table.AddCell("Annual User Tests Report");
             doc.Add(Chunk.NEWLINE);
 
             foreach (var gr in groupsTests)
             {
-                table.AddCell(gr.Key.Year.ToString()+"-"+gr.Key.Month.ToString());
+                table.AddCell(gr.Key.Year.ToString() + "-" + gr.Key.Month.ToString());
                 doc.Add(Chunk.NEWLINE);
 
-                var innerTable = new PdfPTable(5);
-                doc.Add(Chunk.NEWLINE);
+                var innerTable = new PdfPTable(4);
 
                 innerTable.AddCell("User Name");
                 innerTable.AddCell("User Memberships");
@@ -60,9 +59,9 @@
 
                 foreach (var item in gr)
                 {
-                    innerTable.AddCell(item.Name);
-                    innerTable.AddCell(string.Join(", ", item.UserMemberships));
-                    innerTable.AddCell(string.Join(", ", item.Locations));
+                    innerTable.AddCell(item.Name.ToString());
+                    innerTable.AddCell(string.Join(", ", item.UserMemberships) + " ");
+                    innerTable.AddCell(string.Join(", ", item.Locations) + " ");
                     //innerTable.AddCell(item.Date.ToString());
                     innerTable.AddCell(item.UsersTestCount.ToString());
                 }

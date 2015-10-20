@@ -2,10 +2,14 @@
 
 using AvalancheTester.Application.DbHandlers.MongoDb;
 using MongoDB.Driver;
+using System;
+using System.Data.Entity;
+using System.Data.SqlClient;
+using System.Linq;
 
 namespace AvalancheTester.Application
 {
-    using ParsingXML;
+    //using ParsingXML;
 
     public class EntryPoint
     {
@@ -46,9 +50,9 @@ namespace AvalancheTester.Application
 
             // Adding some data to the tables
 
-            /*var dataGenerator = new ManualDataGenerator();
+            var dataGenerator = new ManualDataGenerator();
 
-            dataGenerator.GenerateData();*/
+            //dataGenerator.GenerateData();
 
             /*var handler = new NewExcelTableHandler();
 
@@ -58,17 +62,20 @@ namespace AvalancheTester.Application
 
             dataGenerator.GenerateData();*/
 
-            /*var newHandler = new NewExcelTableHandler();
+            //var newHandler = new NewExcelTableHandler();
 
-            newHandler.InputDataToDatabase();*/
+            //newHandler.InputDataToDatabase();
 
 
             // Reading from MongoDb and writing to SQL Server db
 
-            var mongoPlaceEntitiesController = new PlaceEntitiesController();
-            mongoPlaceEntitiesController.UploadMongoPlacesToSql();
+            //var mongoPlaceEntitiesController = new PlaceEntitiesController();
+            //mongoPlaceEntitiesController.UploadMongoPlacesToSql();
 
-            XmlImporter.ImportToDb("../../XML/places.xml");
+            PdfReport.CreatePdf();
+            //XmlReports.LastMonth(new Place { Name = "Rila" }, DateTime.Now);
+
+            //XmlImporter.ImportToDb("../../XML/places.xml");
         }
     }
 }
