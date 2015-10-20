@@ -1,4 +1,6 @@
-﻿namespace AvalancheTester.Application
+﻿using System;
+
+namespace AvalancheTester.Application
 {
     using iTextSharp.text;
     using iTextSharp.text.pdf;
@@ -34,7 +36,7 @@
             var table = new PdfPTable(NumberOfColumns);
             table.AddCell("Annual User Tests Report");
             doc.Add(Chunk.NEWLINE);
-
+            
             foreach (var gr in groupsTests)
             {
                 table.AddCell(gr.Key.Year.ToString() + "-" + gr.Key.Month.ToString());
@@ -60,6 +62,8 @@
 
             doc.Add(table);
             doc.Close();
+
+            Console.WriteLine("PDF Report created!");
         }
     }
 }

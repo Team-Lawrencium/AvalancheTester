@@ -69,7 +69,6 @@ namespace AvalancheTester.Application
         {
             foreach (var file in Directory.GetFiles(dir))
             {
-                Console.WriteLine("I am in");
                 this.ImportDataFromExcel(file);
             }
         }
@@ -137,7 +136,7 @@ namespace AvalancheTester.Application
 
                 excelDbCommand.ExecuteNonQuery();
 
-                Console.WriteLine("Added new row!");
+                Console.WriteLine("Added new row in Excel output file!");
             }
         }
     }

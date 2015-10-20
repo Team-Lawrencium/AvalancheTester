@@ -1,7 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
-using System.Device.Location;
 using System.Linq;
 
 namespace AvalancheTester.Application.DbHandlers.MongoDb
@@ -21,13 +20,13 @@ namespace AvalancheTester.Application.DbHandlers.MongoDb
             users.Insert(new MongoUser()
             {
                 Id = ObjectId.GenerateNewId().ToString(),
-                Name = "Пешо Петров"
+                Name = "petar Petrov"
             });
 
             users.Insert(new MongoUser()
             {
                 Id = ObjectId.GenerateNewId().ToString(),
-                Name = "Христо Христосков"
+                Name = "Hristo Hristoskov"
             });
 
             //check entries
@@ -40,7 +39,7 @@ namespace AvalancheTester.Application.DbHandlers.MongoDb
             {
                 Id = ObjectId.GenerateNewId().ToString(),
                 UserId = usersList[0].Id,
-                TestResult = "Компресионен тест 2 повторения. Слой 163-154 см. – СТ1, СТ3; Сл...",
+                TestResult = "Compression test 1",
                 DangerLevel = 2,
                 Time = new DateTime(2015, 1, 13, 9, 48, 0),
                 //Position = new GeoCoordinate(42.34356654335, 23.34356654335),
@@ -51,7 +50,7 @@ namespace AvalancheTester.Application.DbHandlers.MongoDb
             {
                 Id = ObjectId.GenerateNewId().ToString(),
                 UserId = usersList[1].Id,
-                TestResult = "Компресионен тест: Слой 163-120 см. – СТ1, СТ3...",
+                TestResult = "Compression test 2",
                 DangerLevel = 5,
                 Time = new DateTime(2015, 2, 15, 9, 48, 0),
                 //Position = new GeoCoordinate(42.34356654335, 23.34356654335),
@@ -64,14 +63,16 @@ namespace AvalancheTester.Application.DbHandlers.MongoDb
             places.Insert(new MongoPlace()
             {
                 Id = 4,
-                Name = "Стара Планина"
+                Name = "The Balkan"
             });
 
             places.Insert(new MongoPlace()
             {
                 Id = 5,
-                Name = "Родопи"
+                Name = "The Rodopes"
             });
+
+            Console.WriteLine("MongoDB database entities generated!");
         }
 
         public static void ClearDatabase(MongoDatabase db)
