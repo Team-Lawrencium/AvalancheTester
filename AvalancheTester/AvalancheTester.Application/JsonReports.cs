@@ -24,13 +24,26 @@ namespace AvalancheTester.Application
             .ToList();
 
             var serializer = new JsonSerializer();
-
-            foreach (var user in userReports)
+            using (UserReportEntities MySqlDb = new UserReportEntities())
             {
-                StreamWriter file = new StreamWriter(path + user.Name + ".json");
-                serializer.Serialize(file, user);
-                //add to MySQL
-                file.Close();
+                foreach (var user in userReports)
+                {
+                    StreamWriter file = new StreamWriter(path + user.Name + ".json");
+                    serializer.Serialize(file, user);
+                    file.Close();
+                    //add to MySQL
+                    userorganisations userOrganisations = new userorganisations()
+                    {
+                        UserId=user.UserId,
+                        UserName=user.Name,
+                        UserOrganisations1=string.Join(", ", user.Organizations)
+                    };
+
+                    MySqlDb.userorganisations.Add(userOrganisations);
+                    
+                }
+
+                MySqlDb.SaveChanges();
             }
         }
     }

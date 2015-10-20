@@ -109,6 +109,21 @@
     <Compile Include="ExcelTableHandler.cs" />
     <Compile Include="JsonReports.cs" />
     <Compile Include="ManualDataGenerator.cs" />
+    <Compile Include="Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
     <Compile Include="NewExcelTableHandler.cs" />
     <Compile Include="Organization.cs">
       <DependentUpon>AvalancheTestsDbEntities.tt</DependentUpon>
@@ -124,23 +139,8 @@
     <Compile Include="User.cs">
       <DependentUpon>AvalancheTestsDbEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="userorganisation.cs">
-      <DependentUpon>UserReportsMySQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UserReportsMySQL.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UserReportsMySQL.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UserReportsMySQL.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UserReportsMySQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UserReportsEntitiesMySQL.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UserReportsEntitiesMySQL.edmx</DependentUpon>
+    <Compile Include="userorganisations.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="XmlReports.cs" />
   </ItemGroup>
@@ -155,14 +155,14 @@
     <None Include="AvalancheTestsDbEntities.edmx.diagram">
       <DependentUpon>AvalancheTestsDbEntities.edmx</DependentUpon>
     </None>
-    <None Include="packages.config" />
-    <EntityDeploy Include="UserReportsEntitiesMySQL.edmx">
+    <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>UserReportsEntitiesMySQL.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="UserReportsEntitiesMySQL.edmx.diagram">
-      <DependentUpon>UserReportsEntitiesMySQL.edmx</DependentUpon>
+    <None Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -178,15 +178,15 @@
       <DependentUpon>AvalancheTestsDbEntities.edmx</DependentUpon>
       <LastGenOutput>AvalancheTestsDbEntities.cs</LastGenOutput>
     </Content>
-    <Content Include="UserReportsMySQL.Context.tt">
+    <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UserReportsEntitiesMySQL.edmx</DependentUpon>
-      <LastGenOutput>UserReportsMySQL.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="UserReportsMySQL.tt">
+    <Content Include="Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UserReportsEntitiesMySQL.edmx</DependentUpon>
-      <LastGenOutput>UserReportsMySQL.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
